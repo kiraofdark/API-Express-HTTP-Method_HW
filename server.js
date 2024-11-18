@@ -12,13 +12,13 @@ const products = [
   { id: 3, name: "Product 3" , price: 300 },
 ];
 
-// POST สำหรับ Create
+// POST สำหรับ Create Product id ใหม่
 app.post("/products", (req, res) => {
   products.push(req.body);
   res.json(products);
 });
 
-// GET สำหรับ Read
+// GET สำหรับ Read Product ทั้งหมด
 app.get("/products", (req, res) => {
   res.json(products);
 });
@@ -31,6 +31,7 @@ app.get("/products/:id", (req, res) => {
   res.json(product);
 });
 
+//  PUT แก้ค่า  name กับ price ใน id
 app.put("/products/:id", (req, res) => {
   const id = Number(req.params.id);
   const product = req.body;
@@ -41,6 +42,7 @@ app.put("/products/:id", (req, res) => {
   res.json(product);
 });
 
+//  Delete id  
 app.delete("/products/:id", (req, res) => {
   const id = Number(req.params.id);
   const index = products.findIndex((s) => s.id === id);
